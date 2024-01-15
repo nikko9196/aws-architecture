@@ -50,6 +50,14 @@ resources:
       Value: !GetAtt EventBridge.Arn
       Export:
         Name: ${self:service}:${sls:stage}:EventBridge
+
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
         
 
 

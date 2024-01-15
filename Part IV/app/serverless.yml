@@ -1,0 +1,56 @@
+service: app
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: us-east-1
+
+  environment:
+    S3_BUCKET_NAME: "restart-nikko-random-photos"
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+      Resource:
+        - "arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/uploads/*"
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource:
+        - "arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/processed/*"
+
+
+functions:
+  process_image_function:
+    handler: handler.process_image_function
+    name: process_image_function
+    events:
+      - s3:
+          bucket: "${self:provider.environment.S3_BUCKET_NAME}"
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .jpg
+    destinations:
+      onSuccess: arn:aws:events:us-east-1:223542559914:event-bus/image-processing-bus
+      onFailure: arn:aws:events:us-east-1:223542559914:event-bus/image-processing-bus
+
+resources:
+  Resources:
+    EventBridge:
+      Type: AWS::Events::EventBus
+      Properties: 
+        Name: "image-processing-bus"
+       
+  Outputs:
+    EventBridge:
+      Description: The ARN for the EventBridge
+      Value: !GetAtt EventBridge.Arn
+      Export:
+        Name: ${self:service}:${sls:stage}:EventBridge
+        
+
+
+

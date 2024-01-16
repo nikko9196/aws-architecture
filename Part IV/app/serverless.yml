@@ -5,52 +5,94 @@ provider:
   name: aws
   runtime: python3.12
   region: us-east-1
-
   environment:
-    S3_BUCKET_NAME: "restart-nikko-random-photos"
+    S3_UPLOAD_BUCKET: "restart-nikko-random-photos-upload"
+    S3_PROCESSED_BUCKET: "restart-nikko-random-photos-processed"
+    EVENTBRIDGE_NAME: "image-processing-bus"
+  layers:
+    - Ref: PythonRequirementsLambdaLayer
+  iam:
+    role:
+      name: LambdaExecutionRole
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+          Resource:
+            - "arn:aws:s3:::${self:provider.environment.S3_UPLOAD_BUCKET}/uploads/*"
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+          Resource:
+            - "arn:aws:s3:::${self:provider.environment.S3_PROCESSED_BUCKET}/processed/*"
 
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - s3:GetObject
-      Resource:
-        - "arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/uploads/*"
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-      Resource:
-        - "arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/processed/*"
+package:
+  individually: true
+  patterns:
+    - "!./*"
+    - "!./node_modules"
+    - ./handler.py
 
-
-functions:
+functions: 
   process_image_function:
     handler: handler.process_image_function
-    name: process_image_function
+    name: process-image-function
     events:
       - s3:
-          bucket: "${self:provider.environment.S3_BUCKET_NAME}"
+          bucket: "${self:provider.environment.S3_UPLOAD_BUCKET}"
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/
             - suffix: .jpg
+    dependsOn:
+      - EventBridge
     destinations:
-      onSuccess: arn:aws:events:us-east-1:223542559914:event-bus/image-processing-bus
-      onFailure: arn:aws:events:us-east-1:223542559914:event-bus/image-processing-bus
+      onSuccess: arn:aws:events:us-east-1:223542559914:event-bus/${self:provider.environment.EVENTBRIDGE_NAME}
+      onFailure: arn:aws:events:us-east-1:223542559914:event-bus/${self:provider.environment.EVENTBRIDGE_NAME}
+  
+  notify_resize_success_function:
+    handler: handler.notify_resize_success_function
+    name: notify-resize-success-function
+    events:
+      - eventBridge:
+          eventBus: !Ref EventBridge
+          pattern:
+            source:
+              - lambda
+            detail:
+              responsePayload:
+                status:
+                  - SUCCEEDED
+
+  notify_resize_fail_function:
+    handler: handler.notify_resize_fail_function
+    name: notify-resize-fail-function
+    events:
+      - eventBridge:
+          eventBus: !Ref EventBridge
+          pattern:
+            source:
+              - lambda
+            detail:
+              responsePayload:
+                status:
+                  - FAILED
 
 resources:
   Resources:
     EventBridge:
       Type: AWS::Events::EventBus
       Properties: 
-        Name: "image-processing-bus"
-       
-  Outputs:
-    EventBridge:
-      Description: The ARN for the EventBridge
-      Value: !GetAtt EventBridge.Arn
-      Export:
-        Name: ${self:service}:${sls:stage}:EventBridge
-
+        Name: ${self:provider.environment.EVENTBRIDGE_NAME}
+    ProccessedBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.S3_PROCESSED_BUCKET}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true
 
 plugins:
   - serverless-python-requirements
@@ -58,6 +100,7 @@ plugins:
 custom:
   pythonRequirements:
     dockerizePip: true
+    layer: true
         
 
 

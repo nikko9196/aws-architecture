@@ -22,12 +22,12 @@ provider:
             - "arn:aws:s3:::${self:provider.environment.S3_UPLOAD_BUCKET}/uploads/*"
         - Effect: Allow
           Action:
+            - s3:GetObject
             - s3:PutObject
           Resource:
             - "arn:aws:s3:::${self:provider.environment.S3_PROCESSED_BUCKET}/processed/*"
 
 package:
-  individually: true
   patterns:
     - "!./*"
     - "!./node_modules"
@@ -63,6 +63,7 @@ functions:
               responsePayload:
                 status:
                   - SUCCEEDED
+                
 
   notify_resize_fail_function:
     handler: handler.notify_resize_fail_function

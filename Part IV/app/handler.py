@@ -65,7 +65,12 @@ def process_image_function(event, context):
                 local_upload_path, S3_PROCESSED_BUCKET, destination_s3_path
             )
 
-            return {"status": "SUCCEEDED"}
+            presigned_url = s3_client.generate_presigned_url(
+                ClientMethod="get_object",
+                Params={"Bucket": S3_PROCESSED_BUCKET, "Key": destination_s3_path},
+            )
+
+            return {"status": "SUCCEEDED", "presigned_url": presigned_url}
 
     except Exception as e:
         print(f"Error: {e}")
@@ -73,30 +78,9 @@ def process_image_function(event, context):
 
 
 def notify_resize_success_function(event, context):
-    print("SUCCEED")
+    print("SUCCEEDED")
+    print(f"Presigned URL: {event["detail"]["responsePayload"]["presigned_url"]}")
 
 
 def notify_resize_fail_function(event, context):
     print("FAILED")
-
-
-# def process_image_function(event, context):
-#     if event["Success"] == True:
-#         response = {
-#             "statusCode": 200,
-#             "body": json.dumps(event)
-#         }
-#     # response = {"statusCode": 200, "body": json.dumps(body)}
-
-#         return response
-#     else:
-#         raise Exception("Some error")
-
-#     # Use this code if you don't use the http event with the LAMBDA-PROXY
-#     # integration
-#     """
-#     return {
-#         "message": "Go Serverless v1.0! Your function executed successfully!",
-#         "event": event
-#     }
-#     """

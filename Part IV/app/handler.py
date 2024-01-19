@@ -1,14 +1,9 @@
-import json
 import boto3
 import os
-import sys
 import uuid
 from urllib.parse import unquote_plus
 
-import pydantic as py
-
 from PIL import Image
-import PIL.Image
 
 # Environment variables
 S3_PROCESSED_BUCKET = os.getenv("S3_PROCESSED_BUCKET")
@@ -43,15 +38,12 @@ def process_image_function(event, context):
 
             print(f"The image name is s3://{bucket_name}/{original_s3_path}")
             destination_s3_path = original_s3_path.replace("uploads", "processed", 1)
-            # original = uploads/kitty-cat-kitten-pet-45201.jpg
 
-            # destination = thumbnails/kitty-cat-kitten-pet-45201.jpg
             print(
                 f"The resize name is s3://{S3_PROCESSED_BUCKET}/{destination_s3_path}"
             )
 
             tmpkey = original_s3_path.replace("/", "")
-            # adding uuid4 to make sure we process an unique object locally to Lambda
             local_download_path = "/tmp/{}{}".format(uuid.uuid4(), tmpkey)
             print(f"The local image name is {local_download_path}")
             local_upload_path = "/tmp/resized-{}".format(tmpkey)
@@ -62,7 +54,7 @@ def process_image_function(event, context):
             resize_image(local_download_path, local_upload_path)
 
             s3_client.upload_file(
-                local_upload_path, S3_PROCESSED_BUCKET, destination_s3_path
+                local_upload_path, S3_PROCESSED_BUCKET, destination_s3_path, ExtraArgs={"ContentType": "image/jpg"}
             )
 
             presigned_url = s3_client.generate_presigned_url(

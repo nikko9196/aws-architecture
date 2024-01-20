@@ -1,8 +1,6 @@
 import boto3
 import os
 
-from PIL import Image
-
 # Environment variables
 S3_UPLOAD_BUCKET = os.getenv("S3_UPLOAD_BUCKET", "restart-nikko-random-photos-upload")
 

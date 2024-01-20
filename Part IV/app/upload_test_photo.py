@@ -1,7 +1,5 @@
 import boto3
 import os
-import uuid
-from urllib.parse import unquote_plus
 
 from PIL import Image
 
@@ -29,6 +27,5 @@ def upload_test_photo(path: str, filename: str):
 
 
 if __name__ == "__main__":
-    path = ""
-    filename = "Manggo_700x700.jpg"
-    upload_test_photo(path, filename)
+    upload_test_photo(path="", filename="Manggo_700x700.jpg")
+    upload_test_photo(path="", filename="Manggo_700x368.jpg")

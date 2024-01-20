@@ -30,7 +30,7 @@ def resize_image(image_path, resized_path, max_width=200):
             print(f"resize image size {resized_image.size}")
 
 
-def process_image_function(event, context):
+def handler(event, context):
     try:
         for record in event["Records"]:
             bucket_name = record["s3"]["bucket"]["name"]
@@ -54,7 +54,10 @@ def process_image_function(event, context):
             resize_image(local_download_path, local_upload_path)
 
             s3_client.upload_file(
-                local_upload_path, S3_PROCESSED_BUCKET, destination_s3_path, ExtraArgs={"ContentType": "image/jpg"}
+                local_upload_path,
+                S3_PROCESSED_BUCKET,
+                destination_s3_path,
+                ExtraArgs={"ContentType": "image/jpg"},
             )
 
             presigned_url = s3_client.generate_presigned_url(
@@ -67,12 +70,3 @@ def process_image_function(event, context):
     except Exception as e:
         print(f"Error: {e}")
         return {"status": "FAILED"}
-
-
-def notify_resize_success_function(event, context):
-    print("SUCCEEDED")
-    print(f"Presigned URL: {event["detail"]["responsePayload"]["presigned_url"]}")
-
-
-def notify_resize_fail_function(event, context):
-    print("FAILED")

@@ -28,15 +28,19 @@ provider:
             - "arn:aws:s3:::${self:provider.environment.S3_PROCESSED_BUCKET}/processed/*"
 
 package:
+  individually: true
   patterns:
     - "!./*"
     - "!./node_modules"
-    - ./handler.py
 
 functions: 
   process_image_function:
-    handler: handler.process_image_function
+    handler: functions/process_image_function.handler
     name: process-image-function
+    package:
+      patterns:
+        - "!./functions/*"
+        - ./functions/process_image_function.py
     events:
       - s3:
           bucket: "${self:provider.environment.S3_UPLOAD_BUCKET}"
@@ -51,8 +55,12 @@ functions:
       onFailure: arn:aws:events:us-east-1:223542559914:event-bus/${self:provider.environment.EVENTBRIDGE_NAME}
   
   notify_resize_success_function:
-    handler: handler.notify_resize_success_function
+    handler: functions/notify_resize_success_function.handler
     name: notify-resize-success-function
+    package:
+      patterns:
+        - "!./functions/*"
+        - ./functions/notify_resize_success_function.py
     events:
       - eventBridge:
           eventBus: !Ref EventBridge
@@ -66,8 +74,12 @@ functions:
                 
 
   notify_resize_fail_function:
-    handler: handler.notify_resize_fail_function
+    handler: functions/notify_resize_fail_function.handler
     name: notify-resize-fail-function
+    package:
+      patterns:
+        - "!./functions/*"
+        - ./functions/notify_resize_fail_function.py
     events:
       - eventBridge:
           eventBus: !Ref EventBridge

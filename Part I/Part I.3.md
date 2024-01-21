@@ -42,11 +42,17 @@ References:
 
 ### Find AWS architecture references for point-to-point messaging
 **AWS Architecture Reference:** https://aws.amazon.com/blogs/compute/implementing-enterprise-integration-patterns-with-aws-messaging-services-point-to-point-channels/
+
 ![Point-to-Point_One-way_Traditional Messaging](<Diagrams_and_Images/Point-to-Point_One-way_Traditional Messaging.jpeg>)
+
 ![Point-to-Point_One-way_Cloud-Native Messaging](<Diagrams_and_Images/Point-to-Point_One-way_Cloud-Native Messaging.jpeg>)
+
 This blog expertly navigates the intricacies of enterprise integration patterns with AWS messaging services, specifically focusing on the important concept of point-to-point messaging. It effectively contrasts traditional messaging using Amazon MQ with cloud-native alternatives such as Amazon SQS and Amazon SNS. By illustrating one-way messaging scenarios, the article underscores the adaptability of Amazon MQ queues for traditional methods and Amazon SQS queues for cloud-native implementations. 
+
 ![Point-to-Point_Request-Response_Traditional Messaging](<Diagrams_and_Images/Point-to-Point_Request-Response_Traditional Messaging.jpeg>) 
+
 ![Point-to-Point_Request-Response_Cloud-Native Messaging](<Diagrams_and_Images/Point-to-Point_Request-Response_Cloud-Native Messaging.jpeg>)
+
 Additionally, the discussion extends to request-response messaging, showcasing the application of both traditional (Amazon MQ) and cloud-native (Amazon SQS) approaches.
 
 ---

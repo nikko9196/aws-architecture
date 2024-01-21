@@ -13,7 +13,8 @@ Reference:
 - DynamoDB tables, including local and global secondary indexes, default to eventual consistency for reads. Similarly, the AWS KMS's API follows an eventual consistency model, indicating that changes to KMS resources may not be immediately visible in subsequent commands.
 
 Reference: 
-- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.htmlhttps://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
+- https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html
 
 ---
 
@@ -28,6 +29,6 @@ Reference:
 
 ### Name some (2-3) usecases where eventually consistent persistences are acceptable
 Eventually consistent persistences are acceptable in the usecases where real-time consistency is not very vital:
-- The Internet Domain Name System (DNS) is a well-known/ classic example of a system with an eventual consistency model. DNS servers do not show us the latest values but, rather, the values are cached and replicated across many directories over the Internet.
-- The second usecase is the Social Media Feeds: In social media applications, where users post updates and share content, eventual consistency can be acceptable. Users might not expect immediate consistency across all devices or when accessing the platform from different locations. As long as the updates eventually reach all users, it meets the requirements of the use case.
+- The Internet Domain Name System (DNS) is a well-known/ classic example of a system with an eventual consistency model. DNS servers do not show us the latest values but, rather, the values are cached and replicated across many directories over the Internet. Users might experience different versions of the DNS data for a short period, but eventual consistency ensures that the most recent data is propagated.
+- The second usecase is the Social Media Feeds: In social media applications, where users post updates and share content, eventual consistency can be acceptable. Users might not expect immediate consistency across all devices or when accessing the platform from different locations. As long as the updates eventually reach all users, it meets the requirements of the use case. The focus is often on providing the user experience over time rather than enforcing real-time consistency.
 

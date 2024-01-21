@@ -11,7 +11,7 @@ The idempotent consumer functions as a Message Filter, ensuring the exclusion of
 
 ### Given SQS as the message broker, and Lambda function as the message consumer**
 ### How would you implement Lambda as an idempotent consumer?
-This is a diagram that I found on the AWS page relating to Processing Payments. The diagram shows the application of SQS, the Lambda function, and a third-party API that the function calls for payment:\
+This is a diagram that I found on the AWS page relating to Processing Payments. The diagram shows the application of SQS, the Lambda function, and a third-party API that the function calls for payment:
 
 ![Idempotency - Payment Process](<Diagrams_and_Images/Idempotency - Payment Process.png>)
 

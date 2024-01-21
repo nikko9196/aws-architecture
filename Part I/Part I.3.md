@@ -26,8 +26,9 @@ https://serverlessland.com/event-driven-architecture/point-to-point-messaging
 - Based on its characteristics, we will use point-to-point messaging for task distribution among many different workers. A single worker will consume a particular task from the queue, process it, and then remove it from the queue, preventing others from processing it.
 
 References:
-- https://serverlessland.com/event-driven-architecture/visuals/point-to-point-messaging
+https://serverlessland.com/event-driven-architecture/visuals/point-to-point-messaging
 https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html
+
 ---
 
 ### When would you use publish/subscribe over the other?
@@ -37,6 +38,7 @@ https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointCha
 References:
 https://programmingsharing.com/point-to-point-and-publish-subscribe-messaging-model-2efc4d2b6726
 https://serverlessland.com/event-driven-architecture/visuals/publish-subscribe
+
 ---
 
 ### Find AWS architecture references for point-to-point messaging

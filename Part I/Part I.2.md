@@ -12,6 +12,7 @@ References:
 https://redis.com/solutions/use-cases/message-broker-pattern-for-microservices-interservice-communication/
 https://serverlessland.com/event-driven-architecture/visuals/why-use-message-brokers
 https://jackynote.medium.com/message-brokers-pros-cons-and-their-crucial-role-in-microservice-3dc6c0df2e53#:~:text=Message%20brokers%20are%20a%20cornerstone,of%20the%20microservices%20being%20built.
+
 ---
 
 ### Find AWS architecture references for the use of message broker in microservices.

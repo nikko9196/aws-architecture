@@ -9,9 +9,9 @@
 - Message brokers play an important role in microservices by decoupling services, enabling interaction without intricate knowledge of each other. This fosters ease in modifying, replacing, or adding new services without disrupting the entire system. They contribute to scalability through independent scaling based on workloads, facilitate reliability by ensuring message persistence and fault tolerance, and enable the implementation of agile, responsive event-driven architectures. The flexibility in supporting various communication patterns like publish-subscribe, request-response, and queuing empowers developers to choose the most fitting pattern for their specific use case.
 
 References:
-https://redis.com/solutions/use-cases/message-broker-pattern-for-microservices-interservice-communication/
-https://serverlessland.com/event-driven-architecture/visuals/why-use-message-brokers
-https://jackynote.medium.com/message-brokers-pros-cons-and-their-crucial-role-in-microservice-3dc6c0df2e53#:~:text=Message%20brokers%20are%20a%20cornerstone,of%20the%20microservices%20being%20built.
+- https://redis.com/solutions/use-cases/message-broker-pattern-for-microservices-interservice-communication/
+- https://serverlessland.com/event-driven-architecture/visuals/why-use-message-brokers
+- https://jackynote.medium.com/message-brokers-pros-cons-and-their-crucial-role-in-microservice-3dc6c0df2e53#:~:text=Message%20brokers%20are%20a%20cornerstone,of%20the%20microservices%20being%20built.
 
 ---
 

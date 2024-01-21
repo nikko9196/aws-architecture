@@ -3,11 +3,12 @@ This file includes the test evidence (screenshots) of
 1. Mock AWS services for Unit Testing (capture of result).
 2. The process of manually uploading images to S3 Bucket on Amazon.
 3. The Python Script to upload the photos programmatically.
+4. Test notify-resize-fail-function scenario.
 
-### Mock AWS services for Unit Testing with some scenarios:
+# 1. Mock AWS services for Unit Testing with some scenarios:
 ![Mock AWS Services for Unit Testing](<Screenshot_UnitTest/0. Mock AWS Services for Unit Testing.png>)
 
-# Test Evidence (Manually upload photos):
+# 2. Test Evidence (Manually upload photos):
 ## A. Deployment:
 **1. Before deploy, S3 is empty:**
 ![1. Before deploy, S3 is empty](<Screenshot_TestEvidence_ManuallyUpload/1. Before deploy, S3 is empty.png>)
@@ -126,7 +127,7 @@ This file includes the test evidence (screenshots) of
 ![37. Test Presigned URL for Manggo_50x50 (Expired)](<Screenshot_TestEvidence_ManuallyUpload/37. Test Presigned URL for Manggo_50x50 (Expired).png>)
 
 
-# Test Evidence (Running Script to upload photos programmatically):
+# 3. Test Evidence (Running Script to upload photos programmatically):
 **1. Before running the Python Script to upload photos programmatically, the uploads/ folder in restart-nikko-random-photos-upload bucket is empty:**
 ![1. Script, Uploads Folder is empty](<Screenshot_TestEvidence_ScriptToUpload/1. Script, Uploads Folder is empty.png>)
 
@@ -168,3 +169,30 @@ This file includes the test evidence (screenshots) of
 
 **14. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:**
 ![14. Test Presigned URL for Manggo_700x368 (Expired)](<Screenshot_TestEvidence_ScriptToUpload/14. Test Presigned URL for Manggo_700x368 (Expired).png>)
+
+# 4. Test notify-resize-fail-function scenario:
+**1. To test the failed scenario, I changed a line of correct code by commenting out on AWS and deployed again:**
+![1. Test the fail scenario by changing a line of correct code](<Screenshot_Test_notify_resize_fail_function/1. Test the fail scenario by changing a line of correct code.png>)
+
+**2. Upload image Manggo_700x700.jpg to uploads/ folder:**
+![2. Uploads Folder_Manggo_700x700](<Screenshot_Test_notify_resize_fail_function/2. Uploads Folder_Manggo_700x700.png>)
+
+**3. Check processed/ folder then and nothing is there:**
+![3. Processed Folder is empty](<Screenshot_Test_notify_resize_fail_function/3. Processed Folder is empty.png>)
+
+**4. Check CloudWatch Log of this process-image-function:**
+![4. CloudWatch process-image-function Log (1)](<Screenshot_Test_notify_resize_fail_function/4. CloudWatch process-image-function Log (1).png>)
+
+**5. CloudWatch Log of process-image-function shows there are errors:**
+![5. CloudWatch process-image-function Log (2)](<Screenshot_Test_notify_resize_fail_function/5. CloudWatch process-image-function Log (2).png>)
+
+**6. Check CloudWatch Log of notify-resize-success-function and there is no new log:**
+![6. CloudWatch notify-resize-success-function Log (1)](<Screenshot_Test_notify_resize_fail_function/6. CloudWatch notify-resize-success-function Log (1).png>)
+
+**7. Check CloudWatch Log of notify-resize-fail-function:**
+![7. CloudWatch notify-resize-fail-function Log (1)](<Screenshot_Test_notify_resize_fail_function/7. CloudWatch notify-resize-fail-function Log (1).png>)
+
+**8.CloudWatch Log: Status is "FAILED" printed:**
+![8. CloudWatch notify-resize-fail-function Log (2)](<Screenshot_Test_notify_resize_fail_function/8. CloudWatch notify-resize-fail-function Log (2).png>)
+
+

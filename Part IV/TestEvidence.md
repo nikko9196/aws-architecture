@@ -5,8 +5,7 @@ This file includes the test evidence (screenshots) of
 3. The Python Script to upload the photos programmatically.
 
 ### Mock AWS services for Unit Testing with some scenarios:
-![0. Unit Test](<Screenshot_TestEvidence_ManuallyUpload/0. Unit Test.png>)
-
+![Mock AWS Services for Unit Testing](<Screenshot_UnitTest/0. Mock AWS Services for Unit Testing.png>)
 
 # Test Evidence (Manually upload photos):
 ## A. Deployment:

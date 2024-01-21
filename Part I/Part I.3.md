@@ -59,11 +59,16 @@ Additionally, the discussion extends to request-response messaging, showcasing t
 ![Pub-sub Pattern - Amazon EventBridge implementation](<Diagrams_and_Images/Pub-sub Pattern - Amazon EventBridge implementation.png>)\
 This insightful blog emphasises the significance of the publish/subscribe pattern in fostering asynchronous communication among AWS microservices, mitigating interdependency challenges. The provided use case illustrates the pattern's applicability in an insurance system, where monthly payment updates trigger interactions across subsystems. The dual implementation options, employing Amazon SNS and EventBridge, offer flexibility for tailored solutions. Whether through SNS's straightforward message distribution or EventBridge's rule-based event filtering, the pub/sub paradigm proves invaluable in orchestrating diverse microservice actions. Overall, the article showcases how adopting this pattern enhances scalability and responsiveness in event-driven architectures on the AWS platform.
 
-**AWS Architecture Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/publish-subscribe.html \
-**Amazon SNS with Standard type:** \
-![Pub-Sub Pattern - Standard](<Diagrams_and_Images/Pub-Sub Pattern - Standard.png>) \
-**Amazon SNS with FIFO type:** \ 
-![Pub-Sub Pattern - FIFO](<Diagrams_and_Images/Pub-Sub Pattern - FIFO.png>) \ 
+**AWS Architecture Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/publish-subscribe.html 
+
+**Amazon SNS with Standard type:** 
+
+![Pub-Sub Pattern - Standard](<Diagrams_and_Images/Pub-Sub Pattern - Standard.png>) 
+
+**Amazon SNS with FIFO type:** 
+
+![Pub-Sub Pattern - FIFO](<Diagrams_and_Images/Pub-Sub Pattern - FIFO.png>) 
+
 Apart from having 2 examples of using AWS SNS and Eventbridge similar to the first blog, this second blog broadens the discussion on Amazon SNS's standard and FIFO topics further underscores the flexibility and ordering options available, making it a comprehensive guide for implementing robust publish-subscribe messaging solutions.
 
 

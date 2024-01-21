@@ -3,6 +3,10 @@
 
 ![Assignment2_PartII_Official Design-Part II.1](<Diagrams_and_Images/Assignment2_PartII_Official Design-Part II.1.png>)
 
+
+### The division table of CIDR:
+![CIDR - Divided based on tiers-01](<Diagrams_and_Images/CIDR - Divided based on tiers-01.png>)
+![CDIR - Divided based on AZs-01](<Diagrams_and_Images/CDIR - Divided based on AZs-01.png>)
 ---
 
 # Part II.2. - Expansive Network Design Questions:

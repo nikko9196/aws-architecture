@@ -20,14 +20,14 @@ Some architecture patterns are:
 ---
 
 ### Find AWS architecture references for the use of CDC
-#### Transactional Processing
-**Reference:** https://aws.amazon.com/blogs/apn/change-data-capture-from-on-premises-sql-server-to-amazon-redshift-target/
+### Transactional Processing
+**AWS Architecture Reference:** https://aws.amazon.com/blogs/apn/change-data-capture-from-on-premises-sql-server-to-amazon-redshift-target/
 **An usecase of a hypothetical retailer with a customer loyalty program to demonstrate how Change Data Capture is used:**
 ![Change Data Capture - Customer Loyalty Programme](<Diagrams_and_Images/Change Data Capture - Customer Loyalty Programme.jpeg>)
 Change Data Capture (CDC) is important in this scenario, systematically tracking and replicating incremental changes in customer loyalty data from the on-premises SQL Server database to AWS. It ensures efficiency by capturing only relevant changes and minimising data transfer and storage needs. The real-time synchronisation enabled by AWS Database Migration Service (DMS) keeps the AWS environment promptly updated. CDC, with additional columns like timestamp and operation indicators, safeguards data integrity during replication. In terms of transactional processing, CDC aligns with the Online Transaction Processing (OLTP) system, monitoring transaction logs for changes and maintaining transactional consistency across environments. This solution integrates new customer registrations, loyalty updates, and deletions, providing timely and accurate insights for analytical purposes.
 
 #### Analytics Processing
-**Reference:** https://aws.amazon.com/blogs/big-data/stream-change-data-to-amazon-kinesis-data-streams-with-aws-dms/
+**AWS Architecture Reference:** https://aws.amazon.com/blogs/big-data/stream-change-data-to-amazon-kinesis-data-streams-with-aws-dms/
 **An usecase of an energy company to demonstrate how Change Data Capture is used:**
 ![Change Data Capture - Weekly Batch Job with Analytics](<Diagrams_and_Images/Change Data Capture - Weekly Batch Job with Analytics.png>)
 In the energy company's scenario, the deployment of Change Data Capture (CDC) through AWS Database Migration Service (AWS DMS) plays a central role in achieving real-time analytics processing. CDC captures and streams changes from Amazon RDS, enabling the company to shift away from weekly batch jobs and gain immediate, precise insights into customer usage patterns and billing details. This ensures data consistency and synchronisation while significantly enhancing the company's analytics processing capabilities.

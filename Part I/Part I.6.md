@@ -1,7 +1,8 @@
 # Part I.6.
 ### Given a simple AWS EC2 in a Auto Scaling Group architecture with ALB and a dedicated DB instance, name 5 system design components/techniques that can help you scale your system to meet more end-customers demand. Hinted layers: Static content cache / Dynamic content cache / Compute distribution / Persistency / Decoupling methods
 ### For each component, explain in few words (other than adding complexity), what are the trade offs of introducing these components if they weren't added before
-5 system design components/ techniques that can help to scale your system to meet more end-customers demand:
+5 system design components/ techniques that can help to scale your system to meet more end-customers demand:\
+
 **1. Static Content Cache with Amazon CloudFront (CDN):**
 - We can integrate CloudFront to cache and deliver static content/files such as HTML/CSS/JS, photos, and videos from edge locations. This minimises the load on the origin server (EC2 instances) and reduces latency for end-users. As the number of end-customers increases, the global distribution of cached content ensures efficient delivery, improved response times, and reduced load on the central infrastructure.
 - **Trade-offs:** While CloudFront enhances performance, there might be costs associated with data transfer and cache invalidation complexities.

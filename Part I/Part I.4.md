@@ -10,9 +10,11 @@ The idempotent consumer functions as a Message Filter, ensuring the exclusion of
 ---
 
 ### Given SQS as the message broker, and Lambda function as the message consumer**
-#### How would you implement Lambda as an idempotent consumer?**
-This is a diagram that I found on the AWS page relating to Processing Payments. The diagram shows the application of SQS, the Lambda function, and a third-party API that the function calls for payment:
+### How would you implement Lambda as an idempotent consumer?
+This is a diagram that I found on the AWS page relating to Processing Payments. The diagram shows the application of SQS, the Lambda function, and a third-party API that the function calls for payment:\
+
 ![Idempotency - Payment Process](<Diagrams_and_Images/Idempotency - Payment Process.png>)
+
 **To implement Lambda as an idempotent consumer, we should use Idempotent Processing Logic:**
 - Annotate the "process" method responsible for handling a single payment record with the @IdempotencyKey annotation, which specifies which parametre is used as the idempotency key.
 - The idempotent feature ensures that if an SQS record with the same payload is received more than once, the third-party API is not called multiple times. Subsequent calls return before invoking the "process" method.
@@ -24,7 +26,7 @@ This is a diagram that I found on the AWS page relating to Processing Payments. 
 Reference: 
 - https://aws.amazon.com/blogs/compute/handling-lambda-functions-idempotency-with-aws-lambda-powertools/
 
-#### Which component would become the bottleneck when you implement idempotent consumers?
+### Which component would become the bottleneck when you implement idempotent consumers?
 Lambda, SQS or third-party API would become the bottleneck when you implement idempotent consumers. For examples:
 - **Lambda Function** Concurrency Limit: If the incoming message volume exceeds the Lambda function's concurrency limit, it may lead to processing delays and potential throttling.
 - **SQS** Message Visibility Timeout: If the Lambda function's processing time surpasses the SQS message visibility timeout, messages might become visible to other consumers before processing is completed.

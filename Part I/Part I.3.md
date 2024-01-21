@@ -41,7 +41,7 @@ References:
 ---
 
 ### Find AWS architecture references for point-to-point messaging
-**Reference:** https://aws.amazon.com/blogs/compute/implementing-enterprise-integration-patterns-with-aws-messaging-services-point-to-point-channels/
+**AWS Architecture Reference:** https://aws.amazon.com/blogs/compute/implementing-enterprise-integration-patterns-with-aws-messaging-services-point-to-point-channels/
 (diagram of point-to-point)
 ![Point-to-Point_One-way_Traditional Messaging](<Diagrams_and_Images/Point-to-Point_One-way_Traditional Messaging.jpeg>)
 ![Point-to-Point_One-way_Cloud-Native Messaging](<Diagrams_and_Images/Point-to-Point_One-way_Cloud-Native Messaging.jpeg>)
@@ -53,14 +53,14 @@ Additionally, the discussion extends to request-response messaging, showcasing t
 ---
 
 ### Find AWS architecture references for publish/subscribe
-**Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-integrating-microservices/pub-sub.html
+**AWS Architecture Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-integrating-microservices/pub-sub.html
 **Pub/Sub Pattern with Amazon SNS implementation**
 ![Pub-sub Pattern - Amazon SNS implementation](<Diagrams_and_Images/Pub-sub Pattern - Amazon SNS implementation.png>)
 **Pub/Sub Pattern with Amazon EventBridge implementation**
 ![Pub-sub Pattern - Amazon EventBridge implementation](<Diagrams_and_Images/Pub-sub Pattern - Amazon EventBridge implementation.png>)
 This insightful blog emphasises the significance of the publish/subscribe pattern in fostering asynchronous communication among AWS microservices, mitigating interdependency challenges. The provided use case illustrates the pattern's applicability in an insurance system, where monthly payment updates trigger interactions across subsystems. The dual implementation options, employing Amazon SNS and EventBridge, offer flexibility for tailored solutions. Whether through SNS's straightforward message distribution or EventBridge's rule-based event filtering, the pub/sub paradigm proves invaluable in orchestrating diverse microservice actions. Overall, the article showcases how adopting this pattern enhances scalability and responsiveness in event-driven architectures on the AWS platform.
 
-**Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/publish-subscribe.html
+**AWS Architecture Reference:** https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/publish-subscribe.html
 **Amazon SNS with Standard type:**
 ![Pub-Sub Pattern - Standard](<Diagrams_and_Images/Pub-Sub Pattern - Standard.png>)
 **Amazon SNS with FIFO type:**

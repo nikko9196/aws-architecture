@@ -127,7 +127,7 @@ This file includes the test evidence (screenshots) of
 ![37. Test Presigned URL for Manggo_50x50 (Expired)](<37. Test Presigned URL for Manggo_50x50 (Expired).png>)
 
 
-<!-- ### Test Evidence (Running Script to upload photos programmatically):
+### Test Evidence (Running Script to upload photos programmatically):
 **1. Before running the Python Script to upload photos programmatically, the uploads/ folder in restart-nikko-random-photos-upload bucket is empty:
 ![1. Script, Uploads Folder is empty](<1. Script, Uploads Folder is empty.png>)
 
@@ -168,4 +168,4 @@ This file includes the test evidence (screenshots) of
 ![13. Test Presigned URL for Manggo_700x700 (Expired)](<13. Test Presigned URL for Manggo_700x700 (Expired).png>)
 
 **14. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:
-![14. Test Presigned URL for Manggo_700x368 (Expired)](<14. Test Presigned URL for Manggo_700x368 (Expired).png>) -->
+![14. Test Presigned URL for Manggo_700x368 (Expired)](<14. Test Presigned URL for Manggo_700x368 (Expired).png>)

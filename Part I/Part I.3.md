@@ -3,12 +3,10 @@
 **1. Message recipients:**
 - Point-to-point: Messages are sent from one sender to one specific receiver. While the channel can have multiple receivers consume messages concurrently, each message is consumed by only one receiver at a time.
 - Pub/Sub: Messages are broadcast to multiple subscribers. The Producer (sender) publishes messages to a Topic, and multiple subscribers (receiver) can receive and process these messages independently. Each message can be consumed by multiple subscribers. 
----
 
 **2. Message Consumption:**
 - Point-to-point: Messages are put onto the queue by the sender and the receiver will consume the messages from the queue. However, the channel can provide a buffer for messages and the consumer can control the rate of consumption. Messages persist until the consumer processes them and delete them from the queue.
 - Pub/Sub: It uses the Push Model, where messages are pushed to downstream consumers instead of consumers pulling messages from a queue.
----
 
 **3. Receivers and Scalability:**
 - Point-to-point: The message sender must know the specific receiver, creating a one-to-one relationship. However, point-to-point channels can support many concurrent receivers, allowing for scalability.
@@ -20,6 +18,7 @@ https://www.ibm.com/docs/en/wip-mg/2.0.0?topic=concepts-point-point-messaging
 https://programmingsharing.com/point-to-point-and-publish-subscribe-messaging-model-2efc4d2b6726
 https://serverlessland.com/event-driven-architecture/pub-sub-messaging
 https://serverlessland.com/event-driven-architecture/point-to-point-messaging
+
 ---
 
 ### When would you use point-to-point messaging over the other?

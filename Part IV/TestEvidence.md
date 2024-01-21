@@ -1,0 +1,171 @@
+### Note:
+This file includes the test evidence (screenshots) of 
+1. Mock AWS services for Unit Testing (capture of result).
+2. The process of manually uploading images to S3 Bucket on Amazon.
+3. The Python Script to upload the photos programmatically.
+
+### Mock AWS services for Unit Testing with some scenarios:
+![0. Unit Test](<0. Unit Test.png>)
+
+
+### Test Evidence (Manually upload photos):
+## A. Deployment:
+**1. Before deploy, S3 is empty:
+![1. Before deploy, S3 is empty](<1. Before deploy, S3 is empty.png>)
+
+**2. Before deploy, Lambda is empty:
+![2. Before deploy, Lambda is empty](<2. Before deploy, Lambda is empty.png>)
+
+**3. Before deploy, CloudWatch is empty:
+![3. Before deploy, CloudWatch is empty](<3. Before deploy, CloudWatch is empty.png>)
+
+**4. Before deploy, EventBus is empty:
+![4. Before deploy, EventBus is empty](<4. Before deploy, EventBus is empty.png>)
+
+**5. Deployed, S3 buckets are created:
+![5. Deployed, S3 is created](<5. Deployed, S3 is created.png>)
+
+**6. Deployed, restart-nikko-random-photos-upload bucket is empty:
+![6. Deployed, Upload Bucket is empty](<6. Deployed, Upload Bucket is empty.png>)
+
+**7. Deployed, restart-nikko-random-photos-processed bucket is empty:
+![7. Deployed, Proccessed Bucket is empty](<7. Deployed, Proccessed Bucket is empty.png>)
+
+**8. Deployed, Lambda functions are created:
+![8. Deployed, Lambda functions are created](<8. Deployed, Lambda functions are created.png>)
+
+**9. Lambda process-image-function created:
+![9. Lambda process-image-function created](<9. Lambda process-image-function created.png>)
+
+**10. Lambda notify-resize-success-function created:
+![10. Lambda notify-resize-success-function created](<10. Lambda notify-resize-success-function created.png>)
+
+**11. Lambda notify-resize-fail-function created:
+![11. Lambda notify-resize-fail-function created](<11. Lambda notify-resize-fail-function created.png>)
+
+**12. Deployed, CloudWatch Logs are created:
+![12. Deployed, CloudWatch is created](<12. Deployed, CloudWatch is created.png>)
+
+**13. Deployed, EventBus image-processing-bus is created:
+![13. Deployed, EventBus is created](<13. Deployed, EventBus is created.png>)
+
+## B. Test with image that has width LARGER THAN 200:
+**14. Create uploads/ folder inside restart-nikko-random-photos-upload bucket, then upload image Manggo_700x368.jpg to uploads/ folder:
+![14. Uploads Folder_Manggo_700x368](<14. Uploads Folder_Manggo_700x368.png>)
+
+**15. The image is resized and automatically uploaded to processed/ folder in restart-nikko-random-photos-processed bucket:
+![15. Processed Folder_Manggo_700x368 (Resized)](<15. Processed Folder_Manggo_700x368 (Resized).png>)
+
+**16. Check CloudWatch Log of this process-image-function: 
+![16. CloudWatch process-image-function Log (1)](<16. CloudWatch process-image-function Log (1).png>)
+
+**17. CloudWatch Log: Original and Resized Image's Size (based on ratio):
+![17. CloudWatch process-image-function Log (2)](<17. CloudWatch process-image-function Log (2).png>)
+
+**18. Check CloudWatch Log of notify-resize-success-function:
+![18. CloudWatch notify-resize-succcess-function Log (1)](<18. CloudWatch notify-resize-succcess-function Log (1).png>)
+
+**19. CloudWatch Log: Status is "SUCCEEDED" and having Presigned URL of resized image:
+![19. CloudWatch notify-resize-succcess-function Log (2)](<19. CloudWatch notify-resize-succcess-function Log (2).png>)
+
+**20. Copy and Paste Presigned URL on the Browser's Tab:
+![20. Test Presigned URL for Manggo_700x368](<20. Test Presigned URL for Manggo_700x368.png>)
+
+## C. Test with image that has width EQUAL TO 200:
+**21. Upload image Manggo_200x200.jpg to uploads/ folder:
+![21. Uploads Folder_Manggo_200x200](<21. Uploads Folder_Manggo_200x200.png>)
+
+**22. The image is resized and automatically uploaded to processed/ folder in restart-nikko-random-photos-processed bucket:
+![22. Processed Folder_Manggo_200x200 (Resized)](<22. Processed Folder_Manggo_200x200 (Resized).png>)
+
+**23. Check CloudWatch Log of this process-image-function: 
+![23. CloudWatch process-image-function Log (1)](<23. CloudWatch process-image-function Log (1).png>)
+
+**24. CloudWatch Log: Original and Resized Image's Size (based on ratio):
+![24. CloudWatch process-image-function Log (2)](<24. CloudWatch process-image-function Log (2).png>)
+
+**25. Check CloudWatch Log of notify-resize-success-function:
+![25. CloudWatch notify-resize-succcess-function Log (1)](<25. CloudWatch notify-resize-succcess-function Log (1).png>)
+
+**26. CloudWatch Log: Status is "SUCCEEDED" and having Presigned URL of resized image:
+![26. CloudWatch notify-resize-succcess-function Log (2)](<26. CloudWatch notify-resize-succcess-function Log (2).png>)
+
+**27. Copy and Paste Presigned URL on the Browser's Tab:
+![27. Test Presigned URL for Manggo_200x200](<27. Test Presigned URL for Manggo_200x200.png>)
+
+## D. Test with image that has width LESS THAN 200:
+**28. Upload image Manggo_50x50.jpg to uploads/ folder:
+![28. Uploads Folder_Manggo_50x50](<28. Uploads Folder_Manggo_50x50.png>)
+
+**29. The image is resized and automatically uploaded to processed/ folder in restart-nikko-random-photos-processed bucket:
+![29. Processed Folder_Manggo_50x50](<29. Processed Folder_Manggo_50x50.png>)
+
+**30. Check CloudWatch Log of this process-image-function: 
+![30. CloudWatch process-image-function Log (1)](<30. CloudWatch process-image-function Log (1).png>)
+
+**31. CloudWatch Log: Original and Resized Image's Size:
+(However, the width of this image is 50, which is less than 200. The Resized Image and Original Image have the same size)
+![31. CloudWatch process-image-function Log (2)](<31. CloudWatch process-image-function Log (2).png>)
+
+**32. Check CloudWatch Log of notify-resize-success-function:
+![32. CloudWatch notify-resize-succcess-function Log (1)](<32. CloudWatch notify-resize-succcess-function Log (1).png>)
+
+**33. CloudWatch Log: Status is "SUCCEEDED" and having Presigned URL of resized image:
+![33. CloudWatch notify-resize-succcess-function Log (2)](<33. CloudWatch notify-resize-succcess-function Log (2).png>)
+
+**34. Copy and Paste Presigned URL on the Browser's Tab:
+![34. Test Presigned URL for Manggo_50x50](<34. Test Presigned URL for Manggo_50x50.png>)
+
+## E. After a period of time, those Presigned URLs above are expired and access is denied:
+**35. Refresh the tab that has Presigned URL of the resized image of Manggo_700x368.jpg:
+![35. Test Presigned URL for Manggo_700x368 (Expired)](<35. Test Presigned URL for Manggo_700x368 (Expired).png>)
+
+**36. Refresh the tab that has Presigned URL of the resized image of Manggo_200x200.jpg:
+![36. Test Presigned URL for Manggo_200x200 (Expired)](<36. Test Presigned URL for Manggo_200x200 (Expired).png>)
+
+**37. Refresh the tab that has Presigned URL of the resized image of Manggo_50x50.jpg:
+![37. Test Presigned URL for Manggo_50x50 (Expired)](<37. Test Presigned URL for Manggo_50x50 (Expired).png>)
+
+
+### Test Evidence (Running Script to upload photos programmatically):
+**1. Before running the Python Script to upload photos programmatically, the uploads/ folder in restart-nikko-random-photos-upload bucket is empty:
+![1. Script, Uploads Folder is empty](<1. Script, Uploads Folder is empty.png>)
+
+**2. Before running the Python Script to upload photos programmatically, the processed/ folder in restart-nikko-random-photos-processed bucket is empty:
+![2. Script, Processed Folder is empty](<2. Script, Processed Folder is empty.png>)
+
+**3. Running the script to programmatically upload two images into the uploads/ folder:
+![3. Run Script - 2 Photos added to Uploads Folder](<3. Run Script - 2 Photos added to Uploads Folder.png>)
+
+**4. Two images are resized and automatically uploaded to processed/ folder in restart-nikko-random-photos-processed bucket:
+![4. Run Script - 2 Photos resized to Processed Folder](<4. Run Script - 2 Photos resized to Processed Folder.png>)
+
+**5. Check CloudWatch Log of this process-image-function: 
+![5. Run Script - CloudWatch process-image-function Log (1)](<5. Run Script - CloudWatch process-image-function Log (1).png>)
+
+**6. CloudWatch Log: Original and Resized Image's Size of Manggo_700x368 (Red  Marking):
+![6. Run Script - CloudWatch process-image-function Log (2)](<6. Run Script - CloudWatch process-image-function Log (2).png>)
+
+**7. CloudWatch Log: Original and Resized Image's Size of Manggo_700x700 (Blue  Marking):
+![7. Run Script - CloudWatch process-image-function Log (3)](<7. Run Script - CloudWatch process-image-function Log (3).png>)
+
+**8. Check CloudWatch Log of notify-resize-success-function:
+![8. Run Script - CloudWatch notify-resize-successful-function Log (1).png](<8. Run Script - CloudWatch notify-resize-successful-function Log (1).png>)
+
+**9. CloudWatch Log: Status of both image uploads are "SUCCEEDED" and having Presigned URLs of resized images:
+![9. Run Script - CloudWatch Log (2)](<9. Run Script - CloudWatch Log (2).png>)
+
+**10. Copy and Paste Presigned URL of Manggo_700x700 (resized image) on the Browser's Tab:
+![10. Test Presigned URL for Manggo_700x700](<10. Test Presigned URL for Manggo_700x700.png>)
+
+**11. CloudWatch Log: Status of both image uploads are "SUCCEEDED" and having Presigned URLs of resized images:
+![11. Run Script - CloudWatch Log (3)](<11. Run Script - CloudWatch Log (3).png>)
+
+**12. Copy and Paste Presigned URL of Manggo_700x368 (resized image) on the Browser's Tab:
+![12. Test Presigned URL for Manggo_700x368](<12. Test Presigned URL for Manggo_700x368.png>)
+
+**13. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:
+![13. Test Presigned URL for Manggo_700x700 (Expired)](<13. Test Presigned URL for Manggo_700x700 (Expired).png>)
+
+**14. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:
+![14. Test Presigned URL for Manggo_700x368 (Expired)](<14. Test Presigned URL for Manggo_700x368 (Expired).png>)

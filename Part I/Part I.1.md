@@ -12,7 +12,7 @@ Reference:
 - We should expect eventual consistency in AWS DynamoDB and AWS Key Management Service (KMS). 
 - DynamoDB tables, including local and global secondary indexes, default to eventual consistency for reads. Similarly, the AWS KMS's API follows an eventual consistency model, indicating that changes to KMS resources may not be immediately visible in subsequent commands.
 
-Reference: 
+References: 
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
 - https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html
 

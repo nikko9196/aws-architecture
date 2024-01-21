@@ -29,7 +29,7 @@ Some architecture patterns are:
 
 Change Data Capture (CDC) is important in this scenario, systematically tracking and replicating incremental changes in customer loyalty data from the on-premises SQL Server database to AWS. It ensures efficiency by capturing only relevant changes and minimising data transfer and storage needs. The real-time synchronisation enabled by AWS Database Migration Service (DMS) keeps the AWS environment promptly updated. CDC, with additional columns like timestamp and operation indicators, safeguards data integrity during replication. In terms of transactional processing, CDC aligns with the Online Transaction Processing (OLTP) system, monitoring transaction logs for changes and maintaining transactional consistency across environments. This solution integrates new customer registrations, loyalty updates, and deletions, providing timely and accurate insights for analytical purposes.
 
-#### Analytics Processing
+### Analytics Processing
 **AWS Architecture Reference:** https://aws.amazon.com/blogs/big-data/stream-change-data-to-amazon-kinesis-data-streams-with-aws-dms/
 
 **An usecase of an energy company to demonstrate how Change Data Capture is used:**

@@ -42,38 +42,38 @@ To fetch data from external news websites, the clients have some requirements:
 
 **Front-end: Blue-marking numbers:**
 
-1->7: After typing the domain name of the website, the browser client can access it and then see the front-end interface of the website returning back to them. 
+- 1->7: After typing the domain name of the website, the browser client can access it and then see the front-end interface of the website returning back to them. 
 
 **Back-end, with API requests: Black-marking numbers:**
 
-1->3: If the browser client interacts with the website (for example, clicking any button to read any news, which means they are sending the GET/news API request). 
+- 1->3: If the browser client interacts with the website (for example, clicking any button to read any news, which means they are sending the GET/news API request). 
 
-4->5: When the GET API request reaches to the API Gateway. If the API Gateway receives any requests, it will trigger Lambda function to query items from the database DynamoDB based on the requests' details.
+- 4->5: When the GET API request reaches to the API Gateway. If the API Gateway receives any requests, it will trigger Lambda function to query items from the database DynamoDB based on the requests' details.
 
-6->9: Then, the GET API responses will be returned back to the client. 
+- 6->9: Then, the GET API responses will be returned back to the client. 
 
 
 **Back-end, fetching data from external news website: Red-marking numbers:**
 
-1: EventBridge Scheduler has scheduled tasks and will trigger Lambda function to fetch data from external news websites, depending on the schedules for different websites.
+- 1: EventBridge Scheduler has scheduled tasks and will trigger Lambda function to fetch data from external news websites, depending on the schedules for different websites.
 
-2: The first Lambda function will fetch data (news/articles) from external news websites. External News Websites are normally public, so we do not need to have any IAM Role to fetch the data. 
+- 2: The first Lambda function will fetch data (news/articles) from external news websites. External News Websites are normally public, so we do not need to have any IAM Role to fetch the data. 
 
-3: Data from external news website is returned back to us.
+- 3: Data from external news website is returned back to us.
 
-4: After getting the data (news/articles), the second Lambda function will do the task of checking if this data is new or not.
+- 4: After getting the data (news/articles), the second Lambda function will do the task of checking if this data is new or not.
 
-5: The second Lambda function queries data from DynamoDB to do a comparison.
+- 5: The second Lambda function queries data from DynamoDB to do a comparison.
 
-6: Requested data getting from DynamoDB is returned back to the second Lambda function.
+- 6: Requested data getting from DynamoDB is returned back to the second Lambda function.
 
-7: The second Lambda function will check whether the latest fetched data is new or not by comparing the links of two articles because that is a unique identifier to each news/article.
+- 7: The second Lambda function will check whether the latest fetched data is new or not by comparing the links of two articles because that is a unique identifier to each news/article.
 
-8: If data is new, it will be saved to DynamoDB. Otherwise, the data will be ignored.
+- 8: If data is new, it will be saved to DynamoDB. Otherwise, the data will be ignored.
 
 
 **Handling incident:**
 
-Also, if the execution fails, it will trigger the AWS SNS to send the messages to notify developers of the company about the issues.
+- Also, if the execution fails, it will trigger the AWS SNS to send the messages to notify developers of the company about the issues.
 
 

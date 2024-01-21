@@ -16,3 +16,9 @@ References:
 ---
 
 ### Find AWS architecture references for the use of message broker in microservices.
+**AWS Architecture Reference:** https://aws.amazon.com/blogs/compute/understanding-asynchronous-messaging-for-microservices/
+While the specific terms "message broker" or "broker" may not be explicitly mentioned in the blog post, the content does discuss the use of asynchronous messaging patterns and various AWS messaging services such as Amazon SQS and Amazon SNS. These services serve the role of facilitating communication between microservices in a decoupled and reliable manner, which is a key function of a message broker in a microservices architecture.
+
+Even though the blog post doesn't use the exact term "message broker," it provides information and examples that are relevant to the use of messaging systems in microservices. The concepts discussed, such as queues and topics, are fundamental components of message broker systems. 
+
+The blog also emphasises the challenged usecase posed by synchronous REST APIs, offering a resilient alternative in asynchronous messaging, with a focus on optimising communication and overcoming infrastructure complexities.

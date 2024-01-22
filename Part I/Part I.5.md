@@ -37,5 +37,6 @@ Change Data Capture (CDC) is important in this scenario, systematically tracking
 ![Change Data Capture - Weekly Batch Job with Analytics](<Diagrams_and_Images/Change Data Capture - Weekly Batch Job with Analytics.png>)
 
 In the energy company's scenario, the deployment of Change Data Capture (CDC) through AWS Database Migration Service (AWS DMS) plays a central role in achieving real-time analytics processing. CDC captures and streams changes from Amazon RDS, enabling the company to shift away from weekly batch jobs and gain immediate, precise insights into customer usage patterns and billing details. This ensures data consistency and synchronisation while significantly enhancing the company's analytics processing capabilities.
+
 The integration of CDC with Amazon Kinesis Data Streams further streamlines real-time data flow, enabling AWS Lambda to respond to specific streams promptly. This responsiveness triggers timely emails and SMS notifications to customers, addressing concerns about potential slowdowns in the core transactional system due to massive data processing. Additionally, leveraging Kinesis Data Firehose to load transaction data into the Amazon S3 data lake supports immediate and accurate forecasting, effectively overcoming challenges associated with traditional batch analytics.
 

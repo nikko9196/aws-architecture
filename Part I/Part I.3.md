@@ -2,7 +2,7 @@
 ### Explain the differences between point-to-point messaging pattern (Queue) and publish/subscribe pattern (Pub/Sub)
 **1. Message recipients:**
 - Point-to-point: Messages are sent from one sender to one specific receiver. While the channel can have multiple receivers consume messages concurrently, each message is consumed by only one receiver at a time.
-- Pub/Sub: Messages are broadcast to multiple subscribers. The Producer (sender) publishes messages to a Topic, and multiple subscribers (receiver) can receive and process these messages independently. Each message can be consumed by multiple subscribers. 
+- Pub/Sub: Messages are broadcast to multiple subscribers. The Producer (sender) publishes messages to a Topic, and multiple Subscribers (receiver) can receive and process these messages independently. Each message can be consumed by multiple subscribers. 
 
 **2. Message Consumption:**
 - Point-to-point: Messages are put onto the queue by the sender and the receiver will consume the messages from the queue. However, the channel can provide a buffer for messages and the consumer can control the rate of consumption. Messages persist until the consumer processes them and delete them from the queue.

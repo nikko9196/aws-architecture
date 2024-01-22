@@ -2,12 +2,14 @@
 ### If you were to adopt a container orchestration engine and an associated compute engine on AWS to replace EC2 and AutoScalingGroup:
 ### What would you use? Why do you think you would like to work with your selected option based on your personal preference?
 If I were to adopt a container orchestration engine and an associated compute engine on AWS to replace EC2 and AutoScaling Group,
+
 **a. For a Container Orchestration Engine:**
 I would use **Amazon Elastic Kubernetes Service (Amazon EKS)**. The reasons are:
 - Kubernetes is a widely adopted and popular choice for container orchestration systems for automating software deployment, scaling, and management. Also, Kubernetes has a large community. 
 - Amazon EKS is a fully managed Kubernetes service to run Kubernetes in the AWS cloud, which means AWS will take care of the control plane: It runs and scales across multiple AWS Availability Zones to ensure high availability. This aligns with the requirement of spanning Subnets across all 3 AZs. Moreover, EKS scales with the application needs, automatically adjusting the number of nodes in our cluster based on demand. Therefore, these give us a free of mind and we can focus on deploying and managing our applications rather than worrying about the underlying Kubernetes infrastructure.
 - In addition, related to security, Amazon EKS integrates with AWS Identity and Access Management (IAM) for authentication and authorisation, providing a secure way to control access to your Kubernetes clusters. This aligns with your security requirements for different tiers in the VPC.
 - To sum up, I think this integration aligns well with the existing AWS infrastructure that we have.
+
 **b. For an associated Compute Engine:**
 To replace EC2 and AutoSclaing Group, for an associated compute engine, I would use **AWS Fargate** going together with AWS EKS. The reasons are:
 - AWS Fargate can operate on a serverless model, where you don't need to manage the underlying EC2 instances. This aligns with the requirement of replacing EC2 and Auto Scaling Group.

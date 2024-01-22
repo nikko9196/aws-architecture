@@ -23,6 +23,7 @@ Let's break down the requirements of the client so that we can find the best sui
 
 
 **3. Back-end with fetching data from external news websites:**
+
 To fetch data from external news websites, the clients have some requirements:
 - The backend constantly looks for the latest news from many different news websites and fetches data at different rates.  It requires a scheduler component to initiate scalable backend tasks for fetching the most recent news articles. Because there are thousands of websites thus the chosen scheduling setup should be scalable to reduce overheads on the engineers to add more sources. The recommendation for this requirement is to use **AWS EventBridge Scheduler**. This service is highly scalable and allows you to schedule millions of tasks that can invoke many AWS services and over 6,000 API operations. Delivering schedules at scale and reducing maintenance costs, EventBridge Scheduler eliminates the necessity for infrastructure provisioning, management, and integration with multiple services.
 - For saving aggregated news headlines and links into a no-management database with infinite scalability, consider using **Amazon DynamoDB**, a fully managed NoSQL database service provided by AWS. DynamoDB is designed to provide scalability, low-latency performance, and automatic scaling based on your needs.
@@ -48,18 +49,18 @@ To fetch data from external news websites, the clients have some requirements:
 
 - 1->3: If the browser client interacts with the website (for example, clicking any button to read any news, which means they are sending the GET/news API request). 
 
-- 4->5: When the GET API request reaches to the API Gateway. If the API Gateway receives any requests, it will trigger Lambda function to query items from the database DynamoDB based on the requests' details.
+- 4->5: When the GET API request reaches the API Gateway. If the API Gateway receives any requests, it will trigger the Lambda function to query items from the database DynamoDB based on the requests' details.
 
 - 6->9: Then, the GET API responses will be returned back to the client. 
 
 
-**Back-end, fetching data from external news website: Red-marking numbers:**
+**Back-end, fetching data from external news websites: Red-marking numbers:**
 
-- 1: EventBridge Scheduler has scheduled tasks and will trigger Lambda function to fetch data from external news websites, depending on the schedules for different websites.
+- 1: EventBridge Scheduler has scheduled tasks and will trigger the Lambda function to fetch data from external news websites, depending on the schedules for different websites.
 
 - 2: The first Lambda function will fetch data (news/articles) from external news websites. External News Websites are normally public, so we do not need to have any IAM Role to fetch the data. 
 
-- 3: Data from external news website is returned back to us.
+- 3: Data from external news websites is returned back to us.
 
 - 4: After getting the data (news/articles), the second Lambda function will do the task of checking if this data is new or not.
 
@@ -67,13 +68,13 @@ To fetch data from external news websites, the clients have some requirements:
 
 - 6: Requested data getting from DynamoDB is returned back to the second Lambda function.
 
-- 7: The second Lambda function will check whether the latest fetched data is new or not by comparing the links of two articles because that is a unique identifier to each news/article.
+- 7: The second Lambda function will check whether the latest fetched data is new or not by comparing the links of two articles because that is a unique identifier for each news/article.
 
 - 8: If data is new, it will be saved to DynamoDB. Otherwise, the data will be ignored.
 
 
 **Handling incident:**
 
-- Also, if the execution fails, it will trigger the AWS SNS to send the messages to notify developers of the company about the issues.
+- Also, if the execution fails, it will trigger the AWS SNS to send messages to notify developers of the company about the issues.
 
 

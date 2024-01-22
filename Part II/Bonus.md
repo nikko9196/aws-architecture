@@ -13,7 +13,7 @@ I would use **Amazon Elastic Kubernetes Service (Amazon EKS)**. The reasons are:
 
 **b. For an associated Compute Engine:**
 
-To replace EC2 and AutoSclaing Group, for an associated compute engine, I would use **AWS Fargate** going together with AWS EKS. The reasons are:
+To replace EC2 and AutoScaling Group, for an associated compute engine, I would use **AWS Fargate** going together with AWS EKS. The reasons are:
 - AWS Fargate can operate on a serverless model, where you don't need to manage the underlying EC2 instances. This aligns with the requirement of replacing EC2 and Auto Scaling Group.
 - AWS Fargate can automatically scale based on the needs of our application.
 - Moreover, in terms of cost, Fargate gives you a flexible option compared to the traditional EC2 instances in that we can pay for the vCPU and memory that our container consumes.

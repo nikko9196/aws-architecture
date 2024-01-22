@@ -167,7 +167,7 @@ This file includes the test evidence (screenshots) of
 **13. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:**
 ![13. Test Presigned URL for Manggo_700x700 (Expired)](<Screenshot_TestEvidence_ScriptToUpload/13. Test Presigned URL for Manggo_700x700 (Expired).png>)
 
-**14. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x700.jpg. The access is now denied:**
+**14. After a period of time, refresh the tab that has Presigned URL of the resized image of Manggo_700x368.jpg. The access is now denied:**
 ![14. Test Presigned URL for Manggo_700x368 (Expired)](<Screenshot_TestEvidence_ScriptToUpload/14. Test Presigned URL for Manggo_700x368 (Expired).png>)
 
 # 4. Test notify-resize-fail-function scenario:

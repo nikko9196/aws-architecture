@@ -23,7 +23,7 @@ Some architecture patterns are:
 ### Transactional Processing
 **AWS Architecture Reference:** https://aws.amazon.com/blogs/apn/change-data-capture-from-on-premises-sql-server-to-amazon-redshift-target/
 
-**An usecase of a hypothetical retailer with a customer loyalty program to demonstrate how Change Data Capture is used:**
+**A usecase of a hypothetical retailer with a customer loyalty program to demonstrate how Change Data Capture is used:**
 
 ![Change Data Capture - Customer Loyalty Programme](<Diagrams_and_Images/Change Data Capture - Customer Loyalty Programme.jpeg>)
 
@@ -32,7 +32,7 @@ Change Data Capture (CDC) is important in this scenario, systematically tracking
 ### Analytics Processing
 **AWS Architecture Reference:** https://aws.amazon.com/blogs/big-data/stream-change-data-to-amazon-kinesis-data-streams-with-aws-dms/
 
-**An usecase of an energy company to demonstrate how Change Data Capture is used:**
+**A usecase of an energy company to demonstrate how Change Data Capture is used:**
 
 ![Change Data Capture - Weekly Batch Job with Analytics](<Diagrams_and_Images/Change Data Capture - Weekly Batch Job with Analytics.png>)
 

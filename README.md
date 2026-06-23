@@ -25,19 +25,20 @@ This repository demonstrates:
 
 Design of a scalable multi-tier AWS infrastructure featuring VPC design, subnet planning, security groups, route tables, high availability, and network traffic flow scenarios.
 
-📄 [View Part I](./Part%20I)
+- 📄 [Classic AWS Architecture Design](./Part%20I/classic-aws-architecture-design.md)
+- 📄 [Future Architecture Considerations](./Part%20I/future-architecture-considerations.md)
 
 ### Part II – AWS Native Architecture Design
 
 Design of a fully managed, serverless AWS architecture for a large-scale news aggregation platform using AWS native services.
 
-📄 [View Part II](./Part%20II)
+- 📄 [AWS Native Architecture Design](./Part%20II/aws-native-architecture-design.md)
 
 ### Part III – Serverless Event-Driven Image Processing Pipeline
 
 Implementation of an event-driven image processing workflow using Amazon S3, AWS Lambda, and Amazon EventBridge with success and failure event handling.
 
-📄 [View Part III](./Part%20III)
+- 📄 [Serverless Event-Driven Image Processing Pipeline](./Part%20III/README.md)
 
 ## Repository Structure
 

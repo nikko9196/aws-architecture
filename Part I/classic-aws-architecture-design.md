@@ -45,7 +45,7 @@ The following sections present the resulting architecture design and supporting 
 
 ### 1. How would you add access for the EC2 instances to S3 and DynamoDB?
 
-![PartI.2.1_Expansive_Network_Design](Diagrams_and_Images/PartI.2.1_Expansive_Network_Design.png)
+![PartI.2.1_Expansive_Network_Design](Diagrams_and_Images/PartI.2.1_Extended_Network_Design.png)
 
 **Explain the method:**
 
@@ -62,15 +62,15 @@ The following sections present the resulting architecture design and supporting 
 ### A. In Green arrows: from 1 API Service Group to another (1 separate figure expected)
 
 **Option 1: 2 API Service Groups on the same subnet:**
-![PartI.2.2.A(1)_Expansive_Network_Design](<Diagrams_and_Images/PartI.2.2.A(1)_Expansive_Network_Design.png>)
+![PartI.2.2.A(1)_Expansive_Network_Design](<Diagrams_and_Images/PartI.2.2.A(1)_Extended_Network_Design.png>)
 
 **Option 2: 2 API Service Groups on different AZs:**
-![PartI.2.2.A(2)_Expansive_Network_Design](<Diagrams_and_Images/PartI.2.2.A(2)_Expansive_Network_Design.png>)
+![PartI.2.2.A(2)_Expansive_Network_Design](<Diagrams_and_Images/PartI.2.2.A(2)_Extended_Network_Design.png>)
 
 ### B. In Orange arrows: from 1 API Service to reach out to Google Maps API in the public internet to get more data (another separate figure expected)
 
-![PartI.2.2.B_Expansive_Network_Design](Diagrams_and_Images/PartI.2.2.B_Expansive_Network_Design.png)
+![PartI.2.2.B_Expansive_Network_Design](Diagrams_and_Images/PartI.2.2.B_Extended_Network_Design.png)
 
 ### C. In Blue arrows: requests from public internet to reach one of the API Services (and another separate figure expected)
 
-![PartI.2.2.C_Expansive_Network_Design.png](Diagrams_and_Images/PartI.2.2.C_Expansive_Network_Design.png)
+![PartI.2.2.C_Expansive_Network_Design.png](Diagrams_and_Images/PartI.2.2.C_Extended_Network_Design.png)
